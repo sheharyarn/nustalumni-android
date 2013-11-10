@@ -1,5 +1,6 @@
 package com.impsycho.nustalumni;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -24,6 +25,8 @@ public class LoginActivity extends Activity {
 	private EditText user_name;
 	private EditText user_pass;
 	private EditText user_pass2;
+	
+	public static String what= "hmmm";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,17 +72,9 @@ public class LoginActivity extends Activity {
 			LoginUser();
 		} else {
 			if (!user_pass.getText().toString().equals(user_pass2.getText().toString())) {
-				new AlertDialog.Builder(this)
-				    .setTitle("Error")
-				    .setMessage("Your Passwords do not match")
-				    .setNegativeButton("Try Again", null)
-				    .show();
+				ErrorAlert("Your Passwords do not Match");
 			} else if (user_pass.getText().toString().length() < 8) {
-				new AlertDialog.Builder(this)
-				    .setTitle("Error")
-				    .setMessage("Password Length is too short (Minimum 8 Characters)")
-				    .setNegativeButton("Try Again", null)
-				    .show();
+				ErrorAlert("Password Length is too short (Minimum 8 Characters)");
 			} else {
 				NewUser();
 			}
@@ -87,31 +82,76 @@ public class LoginActivity extends Activity {
 	}
 	
 	public void LoginUser() {
+		RequestParams params = new RequestParams();
+		params.put("email",    user_email.getText().toString());
+		params.put("password", user_pass.getText().toString());
 		
+		APIclient.post("/user/login/", params, new JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(JSONObject response) {
+	        	try {
+	    			APIclient.api_auth_token = response.getString("auth_token");
+	        	} catch (JSONException e1) { e1.printStackTrace(); }
+			}
+			
+			@Override
+			public void onFailure(Throwable e, JSONObject response) {
+	        	try {
+	    			ErrorAlert(Capitalize(response.getString("error")));
+	        	} catch (JSONException e1) { e1.printStackTrace(); }
+			}
+			
+			@Override
+			public void onFinish() { FinishLoginProcedure(); }
+		});
 	}
 	
 	public void NewUser() {
 		RequestParams params = new RequestParams();
-		params.put("email", user_email.getText().toString());
-		params.put("name",  user_name.getText().toString());
-		params.put("pass",  user_pass.getText().toString());
+		params.put("email",    user_email.getText().toString());
+		params.put("name",     user_name.getText().toString());
+		params.put("password", user_pass.getText().toString());
 		
 		APIclient.post("/user/new/", params, new JsonHttpResponseHandler() {
 			@Override
-			public void onSuccess(JSONObject Response) {
-				
+			public void onSuccess(JSONObject response) {
+	        	try {
+	    			APIclient.api_auth_token = response.getString("auth_token");
+	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
 			@Override
-			public void onFailure(Throwable e, JSONObject Response) {
-				
+			public void onFailure(Throwable e, JSONObject response) {
+	        	try {
+	    			ErrorAlert(Capitalize(response.getString("error")));
+	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
 			@Override
-			public void onFinish() {
-				progressbar.setVisibility(ProgressBar.INVISIBLE);
-			}
+			public void onFinish() { FinishLoginProcedure(); }
 		});
+	}
+	
+	public void ErrorAlert(String message) {
+		new AlertDialog.Builder(this)
+	    .setTitle("Error")
+	    .setMessage(message)
+	    .setNegativeButton("Try Again", null)
+	    .show();
+		
+		FinishLoginProcedure();
+	}
+	
+	public void FinishLoginProcedure() {
+		progressbar.setVisibility(ProgressBar.INVISIBLE);
+	}
+	
+	public String Capitalize(String input) {
+		return (input.substring(0, 1).toUpperCase() + input.substring(1));
+	}
+	
+	public void StartSession(Boolean newuser) {
+		
 	}
 
 }
