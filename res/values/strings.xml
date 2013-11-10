@@ -3,6 +3,11 @@
 
     <string name="app_name">NUST Alumni</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
+    
+    <string-array name="menuitems">
+        <item>Home</item>
+        <item>New Situation</item>
+        <item>About</item>
+        <item>Sign Out</item>
+    </string-array>
 </resources>

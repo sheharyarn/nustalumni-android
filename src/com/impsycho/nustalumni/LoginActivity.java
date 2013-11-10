@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,12 +27,12 @@ public class LoginActivity extends Activity {
 	private EditText user_pass;
 	private EditText user_pass2;
 	
-	public static String what= "hmmm";
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		StartSession(false);
 
 		user_email  = (EditText)findViewById(R.id.login_edit_email);
 		user_name   = (EditText)findViewById(R.id.login_edit_name);
@@ -91,6 +92,7 @@ public class LoginActivity extends Activity {
 			public void onSuccess(JSONObject response) {
 	        	try {
 	    			APIclient.api_auth_token = response.getString("auth_token");
+	    			StartSession(false);
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
@@ -117,6 +119,7 @@ public class LoginActivity extends Activity {
 			public void onSuccess(JSONObject response) {
 	        	try {
 	    			APIclient.api_auth_token = response.getString("auth_token");
+	    			StartSession(true);
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
@@ -151,7 +154,10 @@ public class LoginActivity extends Activity {
 	}
 	
 	public void StartSession(Boolean newuser) {
-		
+		Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+        getApplicationContext().startActivity(intent);
+        finish();
 	}
 
 }
