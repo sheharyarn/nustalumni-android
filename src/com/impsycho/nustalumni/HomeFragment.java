@@ -59,6 +59,11 @@ public class HomeFragment extends Fragment {
     } 
     
     public void ParseHomeData() {
+    	if (ParseValues.home_title == null)
+    		ForceParseHomeData();
+    }
+    
+    public void ForceParseHomeData() {
     	APIclient.get("/data/home/", null, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {

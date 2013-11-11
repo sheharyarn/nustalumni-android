@@ -52,12 +52,8 @@ public class MainActivity extends Activity {
 	            }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        
 
-        HomeFragment myhomefragment = new HomeFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, myhomefragment).commit();
-        
+        LoadHomeFragment();
 	}
 	
 	@Override
@@ -93,20 +89,26 @@ public class MainActivity extends Activity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         	String option = MenuItemList[position];
             if (option.equals("Home"))
-            	DoNothing();
-            else if (option.equals("Sign Out"))
-            	DoNothing();
-            else if (option.equals("New Situation"))
-            	DoNothing();
+            	LoadHomeFragment();
+            else if (option.equals("FAQ"))
+            	LoadFAQFragment();
             
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
         }
     }
     
-    public static void DoNothing() {
-    	
-  
+    
+    // ==== Fragment Loaders
+    public void LoadHomeFragment() {
+        HomeFragment myhomefragment = new HomeFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, myhomefragment).commit();
+    }
+    public void LoadFAQFragment() {
+        FAQFragment myfaqfragment = new FAQFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, myfaqfragment).commit();
     }
 
 }
