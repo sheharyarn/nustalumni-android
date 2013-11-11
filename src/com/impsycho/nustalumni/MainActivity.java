@@ -92,6 +92,8 @@ public class MainActivity extends Activity {
             	LoadHomeFragment();
             else if (option.equals("FAQ"))
             	LoadFAQFragment();
+            else if (option.equals("Profile"))
+            	LoadProfileFragment();
             
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
@@ -109,6 +111,11 @@ public class MainActivity extends Activity {
         FAQFragment myfaqfragment = new FAQFragment();
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, myfaqfragment).commit();
+    }
+    public void LoadProfileFragment() {
+        MyProfileFragment profilefragment = new MyProfileFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, profilefragment).commit();
     }
 
 }

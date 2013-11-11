@@ -9,7 +9,9 @@ package com.impsycho.nustalumni;
 
 public final class R {
     public static final class array {
+        public static final int bool=0x7f080001;
         public static final int menuitems=0x7f080000;
+        public static final int professional_status=0x7f080002;
     }
     public static final class attr {
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
@@ -191,7 +193,7 @@ containing a value of this type.
         public static final int nust_login=0x7f02001e;
     }
     public static final class id {
-        public static final int action_settings=0x7f05001b;
+        public static final int action_settings=0x7f05002b;
         public static final int content_frame=0x7f05000e;
         public static final int drawer_layout=0x7f05000d;
         public static final int faq_layout=0x7f050011;
@@ -213,10 +215,26 @@ containing a value of this type.
         public static final int login_edit_password2=0x7f050009;
         public static final int login_progress=0x7f05000c;
         public static final int login_text_create=0x7f05000a;
+        public static final int myprofile_campus=0x7f050024;
+        public static final int myprofile_changepass=0x7f05001f;
+        public static final int myprofile_course=0x7f050022;
+        public static final int myprofile_courseyear=0x7f050023;
+        public static final int myprofile_discipline=0x7f050020;
+        public static final int myprofile_email=0x7f05001e;
+        public static final int myprofile_firstname=0x7f05001c;
+        public static final int myprofile_graduate=0x7f050025;
+        public static final int myprofile_image=0x7f05001b;
+        public static final int myprofile_jobcompany=0x7f050026;
+        public static final int myprofile_jobposition=0x7f050027;
+        public static final int myprofile_lastname=0x7f05001d;
+        public static final int myprofile_layout=0x7f05001a;
+        public static final int myprofile_loader=0x7f050019;
+        public static final int myprofile_profstatus=0x7f050021;
+        public static final int myprofile_update=0x7f050028;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int row_answer=0x7f05001a;
-        public static final int row_question=0x7f050019;
+        public static final int row_answer=0x7f05002a;
+        public static final int row_question=0x7f050029;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
     }
@@ -226,7 +244,8 @@ containing a value of this type.
         public static final int drawer_list_item=0x7f030002;
         public static final int fragment_faq=0x7f030003;
         public static final int fragment_home=0x7f030004;
-        public static final int row_order=0x7f030005;
+        public static final int fragment_myprofile=0x7f030005;
+        public static final int row_order=0x7f030006;
     }
     public static final class menu {
         public static final int login=0x7f0a0000;

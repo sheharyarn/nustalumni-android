@@ -14,4 +14,16 @@
         <item>Settings</item>
         <item>Sign Out</item>
     </string-array>
+    
+        
+    <string-array name="bool">
+        <item>False</item>
+        <item>True</item>
+    </string-array>
+    
+    <string-array name="professional_status">
+        <item>Seeking Jobs</item>
+        <item>Seeking Employees</item>
+        <item>Seeking Connections</item>
+    </string-array>
 </resources>
