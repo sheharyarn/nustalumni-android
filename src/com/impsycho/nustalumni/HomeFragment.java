@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
     	emptyloader = (ProgressBar)homeView.findViewById(R.id.home_loader);
     	layout = (LinearLayout)homeView.findViewById(R.id.home_layout);
     	
-    	InflateHomeData();
+    	InflateHomeData(); 
     	ParseHomeData();
     	
     	return homeView;
@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
     		title.setText(ParseValues.home_title);
     		content.setText(ParseValues.home_content);
         }
-    }
+    } 
     
     public void ParseHomeData() {
     	APIclient.get("/data/home/", null, new JsonHttpResponseHandler() {

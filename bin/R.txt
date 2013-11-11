@@ -62,9 +62,9 @@ int id action_settings 0x7f050016
 int id content_frame 0x7f05000e
 int id drawer_layout 0x7f05000d
 int id home_content 0x7f050014
-int id home_images 0x7f050012
-int id home_layout 0x7f050011
-int id home_loader 0x7f050010
+int id home_images 0x7f050010
+int id home_layout 0x7f050012
+int id home_loader 0x7f050011
 int id home_readmore 0x7f050015
 int id home_title 0x7f050013
 int id hybrid 0x7f050004

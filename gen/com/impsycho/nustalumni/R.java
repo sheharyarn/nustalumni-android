@@ -195,9 +195,9 @@ containing a value of this type.
         public static final int content_frame=0x7f05000e;
         public static final int drawer_layout=0x7f05000d;
         public static final int home_content=0x7f050014;
-        public static final int home_images=0x7f050012;
-        public static final int home_layout=0x7f050011;
-        public static final int home_loader=0x7f050010;
+        public static final int home_images=0x7f050010;
+        public static final int home_layout=0x7f050012;
+        public static final int home_loader=0x7f050011;
         public static final int home_readmore=0x7f050015;
         public static final int home_title=0x7f050013;
         public static final int hybrid=0x7f050004;
