@@ -1,6 +1,7 @@
 package com.impsycho.nustalumni;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -39,7 +40,7 @@ public class MainActivity extends Activity {
         	R.drawable.ic_drawer, 
         	R.string.app_name,
         	R.string.app_name
-        ) {
+        	) {
 	            public void onDrawerClosed(View view) {
 	                getActionBar().setTitle("Niggerless");
 	                invalidateOptionsMenu();
@@ -52,6 +53,10 @@ public class MainActivity extends Activity {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         
+
+        HomeFragment myhomefragment = new HomeFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, myhomefragment).commit();
         
 	}
 	

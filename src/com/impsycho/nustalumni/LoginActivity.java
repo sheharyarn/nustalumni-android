@@ -149,7 +149,7 @@ public class LoginActivity extends Activity {
 		progressbar.setVisibility(ProgressBar.INVISIBLE);
 	}
 	
-	public String Capitalize(String input) {
+	public static String Capitalize(String input) {
 		return (input.substring(0, 1).toUpperCase() + input.substring(1));
 	}
 	
