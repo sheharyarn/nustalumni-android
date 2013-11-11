@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
     		emptyloader.setVisibility(ProgressBar.GONE);
     		
     		title.setText(ParseValues.home_title);
-    		content.setText(ParseValues.home_content);
+    		content.setText(ParseValues.home_content.substring(0, ParseValues.home_content.indexOf("\n\n")));
         }
     } 
     
