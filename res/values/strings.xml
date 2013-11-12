@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">NUST Alumni</string>
+    <string name="app_version">v0.1.2</string>
+    <string name="app_version_detail">App Version: v0.1.2</string>
     <string name="action_settings">Settings</string>
     
     <string-array name="menuitems">

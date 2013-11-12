@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nust_login"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".LoginActivity" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/naa_logo_small" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="App Developed for\nThe Nust Alumni Association\nH-12, Islamabad" />
+
+    <TextView
+        android:id="@+id/about_linknust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="http://nust.edu.pk/Alumni"
+        android:textColor="@android:color/holo_blue_light" />
+    
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="4" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:text="@string/app_version_detail" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Powered by a RoR Backend" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Developed By:" />
+
+    <ImageButton
+        android:id="@+id/about_linkpsycho"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp"
+        android:background="@null"
+        android:onClick="OpenDeveloperWebsite"
+        android:src="@drawable/common_signin_btn_text_normal_light" />
+
+</LinearLayout>
