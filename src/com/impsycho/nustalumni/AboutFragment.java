@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class AboutFragment extends Fragment {
@@ -22,12 +23,15 @@ public class AboutFragment extends Fragment {
         	}
     	});
     	
+    	ImageButton devlink = (ImageButton)aboutView.findViewById(R.id.about_linkpsycho);
+    	devlink.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
+            	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://sheharyar.me/"));
+        		startActivity(browserIntent);
+        	}
+    	});
+    	
     	return aboutView;
-    }
-    
-    public void OpenDeveloperWebsite(View view) {
-    	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://sheharyar.me/"));
-		startActivity(browserIntent);
     }
     
 }

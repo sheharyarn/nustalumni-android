@@ -196,7 +196,7 @@ containing a value of this type.
     public static final class id {
         public static final int about_linknust=0x7f050010;
         public static final int about_linkpsycho=0x7f050011;
-        public static final int action_settings=0x7f05002d;
+        public static final int action_settings=0x7f050030;
         public static final int content_frame=0x7f05000e;
         public static final int drawer_layout=0x7f05000d;
         public static final int faq_layout=0x7f050013;
@@ -236,10 +236,13 @@ containing a value of this type.
         public static final int myprofile_update=0x7f05002a;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int row_answer=0x7f05002c;
-        public static final int row_question=0x7f05002b;
+        public static final int pager=0x7f05002b;
+        public static final int pager_title_strip=0x7f05002c;
+        public static final int row_answer=0x7f05002f;
+        public static final int row_question=0x7f05002e;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
+        public static final int textView1=0x7f05002d;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
@@ -249,7 +252,9 @@ containing a value of this type.
         public static final int fragment_faq=0x7f030004;
         public static final int fragment_home=0x7f030005;
         public static final int fragment_myprofile=0x7f030006;
-        public static final int row_order=0x7f030007;
+        public static final int fragment_people_pager=0x7f030007;
+        public static final int fragment_people_section=0x7f030008;
+        public static final int row_order=0x7f030009;
     }
     public static final class menu {
         public static final int login=0x7f0a0000;

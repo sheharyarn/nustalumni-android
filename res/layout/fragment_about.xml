@@ -24,7 +24,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:text="App Developed for\nThe Nust Alumni Association\nH-12, Islamabad" />
+        android:text="App Developed for\nThe Nust Alumni Association\nNUST H-12, Islamabad" />
 
     <TextView
         android:id="@+id/about_linknust"
@@ -67,7 +67,6 @@
         android:layout_marginBottom="15dp"
         android:layout_marginTop="5dp"
         android:background="@null"
-        android:onClick="OpenDeveloperWebsite"
         android:src="@drawable/common_signin_btn_text_normal_light" />
 
 </LinearLayout>

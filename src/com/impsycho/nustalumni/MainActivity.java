@@ -1,6 +1,7 @@
 package com.impsycho.nustalumni;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -90,10 +91,12 @@ public class MainActivity extends Activity {
         	String option = MenuItemList[position];
             if (option.equals("Home"))
             	LoadHomeFragment();
-            else if (option.equals("FAQ"))
-            	LoadFAQFragment();
+            else if (option.equals("People"))
+            	LoadPeopleFragment();
             else if (option.equals("Profile"))
             	LoadProfileFragment();
+            else if (option.equals("FAQ"))
+            	LoadFAQFragment();
             else if (option.equals("About"))
             	LoadAboutFragment();
             
@@ -104,25 +107,15 @@ public class MainActivity extends Activity {
     
     
     // ==== Fragment Loaders
-    public void LoadHomeFragment() {
-        HomeFragment myhomefragment = new HomeFragment();
+    public void LoadHomeFragment()     { LoadMyFragment(new HomeFragment());      }
+    public void LoadPeopleFragment()   { LoadMyFragment(new PeopleFragment());    }    
+    public void LoadProfileFragment()  { LoadMyFragment(new MyProfileFragment()); }    
+    public void LoadFAQFragment()      { LoadMyFragment(new FAQFragment());       }    
+    public void LoadAboutFragment()    { LoadMyFragment(new AboutFragment());     }
+    
+    public void LoadMyFragment(Fragment frag) {
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, myhomefragment).commit();
-    }
-    public void LoadFAQFragment() {
-        FAQFragment myfaqfragment = new FAQFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, myfaqfragment).commit();
-    }
-    public void LoadProfileFragment() {
-        MyProfileFragment profilefragment = new MyProfileFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, profilefragment).commit();
-    }
-    public void LoadAboutFragment() {
-        AboutFragment aboutfragment = new AboutFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, aboutfragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
     }
 
 }
