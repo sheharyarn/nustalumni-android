@@ -63,10 +63,11 @@
     <ImageButton
         android:id="@+id/about_linkpsycho"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginBottom="15dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="5dp"
         android:background="@null"
-        android:src="@drawable/common_signin_btn_text_normal_light" />
+        android:scaleType="centerInside"
+        android:src="@drawable/dev_logo" />
 
 </LinearLayout>

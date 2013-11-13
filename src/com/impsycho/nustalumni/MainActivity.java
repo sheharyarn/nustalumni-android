@@ -43,15 +43,9 @@ public class MainActivity extends FragmentActivity {
         	R.string.app_name,
         	R.string.app_name
         	) {
-	            public void onDrawerClosed(View view) {
-	                getActionBar().setTitle("Niggerless");
-	                invalidateOptionsMenu();
-	            }
-	
-	            public void onDrawerOpened(View drawerView) {
-	                getActionBar().setTitle("Bitchless");
-	                invalidateOptionsMenu();
-	            }
+
+            public void onDrawerClosed(View view)       { invalidateOptionsMenu(); }
+            public void onDrawerOpened(View drawerView) { invalidateOptionsMenu(); }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
@@ -100,7 +94,8 @@ public class MainActivity extends FragmentActivity {
             	LoadFAQFragment();
             else if (option.equals("About"))
             	LoadAboutFragment();
-            
+
+        	getActionBar().setTitle(option);
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
         }
