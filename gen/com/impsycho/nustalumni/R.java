@@ -211,6 +211,7 @@ containing a value of this type.
         public static final int hybrid=0x7f050004;
         public static final int imageView1=0x7f050005;
         public static final int left_drawer=0x7f05000f;
+        public static final int listView1=0x7f05002d;
         public static final int login_button=0x7f05000b;
         public static final int login_edit_email=0x7f050007;
         public static final int login_edit_name=0x7f050006;
@@ -242,7 +243,6 @@ containing a value of this type.
         public static final int row_question=0x7f05002e;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
-        public static final int textView1=0x7f05002d;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
