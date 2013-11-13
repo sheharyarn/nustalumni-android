@@ -199,7 +199,7 @@ containing a value of this type.
     public static final class id {
         public static final int about_linknust=0x7f050010;
         public static final int about_linkpsycho=0x7f050011;
-        public static final int action_settings=0x7f050030;
+        public static final int action_settings=0x7f050033;
         public static final int content_frame=0x7f05000e;
         public static final int drawer_layout=0x7f05000d;
         public static final int faq_layout=0x7f050013;
@@ -214,7 +214,6 @@ containing a value of this type.
         public static final int hybrid=0x7f050004;
         public static final int imageView1=0x7f050005;
         public static final int left_drawer=0x7f05000f;
-        public static final int listView1=0x7f05002d;
         public static final int login_button=0x7f05000b;
         public static final int login_edit_email=0x7f050007;
         public static final int login_edit_name=0x7f050006;
@@ -242,7 +241,11 @@ containing a value of this type.
         public static final int normal=0x7f050001;
         public static final int pager=0x7f05002b;
         public static final int pager_title_strip=0x7f05002c;
+        public static final int people_list=0x7f05002d;
         public static final int row_answer=0x7f05002f;
+        public static final int row_person_discipline=0x7f050032;
+        public static final int row_person_image=0x7f050030;
+        public static final int row_person_name=0x7f050031;
         public static final int row_question=0x7f05002e;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
@@ -257,7 +260,8 @@ containing a value of this type.
         public static final int fragment_myprofile=0x7f030006;
         public static final int fragment_people_pager=0x7f030007;
         public static final int fragment_people_section=0x7f030008;
-        public static final int row_order=0x7f030009;
+        public static final int row_faq=0x7f030009;
+        public static final int row_person=0x7f03000a;
     }
     public static final class menu {
         public static final int login=0x7f0a0000;

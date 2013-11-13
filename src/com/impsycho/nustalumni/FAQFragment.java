@@ -47,7 +47,7 @@ public class FAQFragment extends Fragment {
     		layout.setVisibility(LinearLayout.VISIBLE);
     		emptyloader.setVisibility(ProgressBar.GONE);
     		
-    		faqlist.setAdapter(new RowAdapter(getActivity().getApplicationContext(), ParseValues.faq_questions.toArray(new String[ParseValues.faq_questions.size()])));
+    		faqlist.setAdapter(new FAQRowAdapter(getActivity().getApplicationContext(), ParseValues.faq_questions.toArray(new String[ParseValues.faq_questions.size()])));
 
         }
     } 

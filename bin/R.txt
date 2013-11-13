@@ -66,7 +66,7 @@ int drawable nust_bg 0x7f020021
 int drawable nust_login 0x7f020022
 int id about_linknust 0x7f050010
 int id about_linkpsycho 0x7f050011
-int id action_settings 0x7f050030
+int id action_settings 0x7f050033
 int id content_frame 0x7f05000e
 int id drawer_layout 0x7f05000d
 int id faq_layout 0x7f050013
@@ -81,7 +81,6 @@ int id home_title 0x7f050018
 int id hybrid 0x7f050004
 int id imageView1 0x7f050005
 int id left_drawer 0x7f05000f
-int id listView1 0x7f05002d
 int id login_button 0x7f05000b
 int id login_edit_email 0x7f050007
 int id login_edit_name 0x7f050006
@@ -109,7 +108,11 @@ int id none 0x7f050000
 int id normal 0x7f050001
 int id pager 0x7f05002b
 int id pager_title_strip 0x7f05002c
+int id people_list 0x7f05002d
 int id row_answer 0x7f05002f
+int id row_person_discipline 0x7f050032
+int id row_person_image 0x7f050030
+int id row_person_name 0x7f050031
 int id row_question 0x7f05002e
 int id satellite 0x7f050002
 int id terrain 0x7f050003
@@ -122,7 +125,8 @@ int layout fragment_home 0x7f030005
 int layout fragment_myprofile 0x7f030006
 int layout fragment_people_pager 0x7f030007
 int layout fragment_people_section 0x7f030008
-int layout row_order 0x7f030009
+int layout row_faq 0x7f030009
+int layout row_person 0x7f03000a
 int menu login 0x7f0a0000
 int menu main 0x7f0a0001
 int string action_settings 0x7f060018

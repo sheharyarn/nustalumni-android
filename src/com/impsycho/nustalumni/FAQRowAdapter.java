@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class RowAdapter extends ArrayAdapter<String>{
+public class FAQRowAdapter extends ArrayAdapter<String>{
 	private final Context context;
 	private final String[] order_data;
 	
-	public RowAdapter(Context context, String[] order_data) {
-		super(context, R.layout.row_order, order_data);
+	public FAQRowAdapter(Context context, String[] order_data) {
+		super(context, R.layout.row_faq, order_data);
 		this.context = context;
 		this.order_data = order_data;
 	}
@@ -23,7 +23,7 @@ public class RowAdapter extends ArrayAdapter<String>{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
  
 		View rowView;
-		rowView = inflater.inflate(R.layout.row_order, parent, false);
+		rowView = inflater.inflate(R.layout.row_faq, parent, false);
 
 		final TextView question = (TextView) rowView.findViewById (R.id.row_question);
 		final TextView answer   = (TextView) rowView.findViewById (R.id.row_answer);

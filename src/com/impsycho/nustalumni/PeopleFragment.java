@@ -6,8 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
-
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +17,9 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 
 public class PeopleFragment extends Fragment {
@@ -97,9 +97,9 @@ public class PeopleFragment extends Fragment {
 
         @Override
         public Fragment getItem(int i) {
-        	Fragment fragment = new DemoObjectFragment();
+        	Fragment fragment = new PeopleSectionFragment();
             Bundle args = new Bundle();
-            args.putInt(DemoObjectFragment.ARG_OBJECT, i + 1); // Our object is just an integer :-P
+            args.putInt(PeopleSectionFragment.ARG_POSITION, i);
             fragment.setArguments(args);
             return fragment;
         }
@@ -121,13 +121,24 @@ public class PeopleFragment extends Fragment {
         }
     }
 
-    public static class DemoObjectFragment extends Fragment {
-        public static final String ARG_OBJECT = "object";
+    public static class PeopleSectionFragment extends Fragment {
+        public static final String ARG_POSITION = "position_object";
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_people_section, container, false);
-            Bundle args = getArguments();
-//            ((TextView) rootView.findViewById(R.id.textView1)).setText(Integer.toString(args.getInt(ARG_OBJECT)));
+            int pos = getArguments().getInt(ARG_POSITION);
+            
+            if (ParseValues.hasPeople) {
+	        	ListView peoplelist = (ListView)rootView.findViewById(R.id.people_list);
+	        	peoplelist.setAdapter(new PeopleRowAdapter(
+	        		getActivity().getApplicationContext(),
+	        		ParseValues.people_names.get(pos).toArray(
+	        			new String[ParseValues.people_names.get(pos).size()]
+	        		),
+	        		pos
+	        	));	
+            }
+
             return rootView;
         }
     }

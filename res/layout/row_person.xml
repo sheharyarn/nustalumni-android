@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="7dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="7dp" >
+
+    <ImageView
+        android:id="@+id/row_person_image"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/nust_login" />
+
+    <TextView
+        android:id="@+id/row_person_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/row_person_image"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/row_person_image"
+        android:text="Person Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/row_person_discipline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/row_person_image"
+        android:layout_alignLeft="@+id/row_person_name"
+        android:text="Person Discipline"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="12sp" />
+
+</RelativeLayout>
