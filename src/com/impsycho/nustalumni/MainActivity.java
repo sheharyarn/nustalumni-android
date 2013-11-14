@@ -1,5 +1,6 @@
 package com.impsycho.nustalumni;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -94,6 +95,10 @@ public class MainActivity extends FragmentActivity {
             	LoadFAQFragment();
             else if (option.equals("About"))
             	LoadAboutFragment();
+            else if (option.equals("Settings"))
+            	LoadSettings();
+            else if (option.equals("Sign Out"))
+            	Logout();
 
         	getActionBar().setTitle(option);
             mDrawerList.setItemChecked(position, true);
@@ -112,6 +117,23 @@ public class MainActivity extends FragmentActivity {
     public void LoadMyFragment(Fragment frag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+    }
+    
+    public void LoadSettings() {
+    	LoadMyFragment(new EmptyFragment());
+    	getFragmentManager()
+	    	.beginTransaction()
+	        .replace(R.id.content_frame, new SettingsFragment())
+	        .commit();
+    }
+    
+    public void Logout() {
+    	APIclient.api_auth_token = null;
+		Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+        getApplicationContext().startActivity(intent);
+        finish();
+    	
     }
 
 }

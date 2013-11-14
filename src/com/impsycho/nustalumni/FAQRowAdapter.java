@@ -38,11 +38,20 @@ public class FAQRowAdapter extends ArrayAdapter<String>{
 			}
 		});
 		
+		answer.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				if (answer.getVisibility() == TextView.VISIBLE)
+					answer.setVisibility(TextView.GONE);
+				else
+					answer.setVisibility(TextView.VISIBLE);					
+			}
+		});
+		
 		question.setText(order_data[position]);
 		answer.setText(ParseValues.faq_answers.get(position));
 	
 		return rowView;
 	}
-
 
 }

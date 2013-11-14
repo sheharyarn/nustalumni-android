@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -77,7 +78,7 @@ public class PeopleFragment extends Fragment {
         			}
 
     				ParseValues.hasPeople = true;
-//	    			InflateFAQData();
+    		        mViewPager.setAdapter(peopleAdapter);
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
@@ -128,8 +129,11 @@ public class PeopleFragment extends Fragment {
             View rootView = inflater.inflate(R.layout.fragment_people_section, container, false);
             int pos = getArguments().getInt(ARG_POSITION);
             
+        	ListView peoplelist = (ListView)rootView.findViewById(R.id.people_list);
+        	ProgressBar loader  = (ProgressBar)rootView.findViewById(R.id.people_loader);
+            
             if (ParseValues.hasPeople) {
-	        	ListView peoplelist = (ListView)rootView.findViewById(R.id.people_list);
+            	loader.setVisibility(ProgressBar.GONE);
 	        	peoplelist.setAdapter(new PeopleRowAdapter(
 	        		getActivity().getApplicationContext(),
 	        		ParseValues.people_names.get(pos).toArray(
@@ -137,6 +141,8 @@ public class PeopleFragment extends Fragment {
 	        		),
 	        		pos
 	        	));	
+            } else {
+            	loader.setVisibility(ProgressBar.VISIBLE);
             }
 
             return rootView;
