@@ -4,58 +4,71 @@
     android:orientation="vertical"
     android:background="@drawable/background" >
 
-    <ImageView
-        android:id="@+id/home_images"
-        android:layout_width="fill_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/nust_login" />
-
-    <FrameLayout
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ProgressBar
-            android:id="@+id/home_loader"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingBottom="25dp" />
+        android:layout_height="wrap_content" >
 
         <LinearLayout
-        	android:id="@+id/home_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/home_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/holo_blue_light" />
-
-            <TextView
-                android:id="@+id/home_content"
+            <ImageView
+                android:id="@+id/home_images"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Content"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/nust_login" />
 
-            <TextView
-                android:id="@+id/home_readmore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="7dp"
-                android:text="Read More..."
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@android:color/holo_blue_light" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ProgressBar
+                    android:id="@+id/home_loader"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingBottom="25dp" />
+
+                <LinearLayout
+                    android:id="@+id/home_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/home_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Title"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/holo_blue_light" />
+
+                    <TextView
+                        android:id="@+id/home_content"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Content"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/home_readmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:text="Show More..."
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@android:color/holo_blue_light" />
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
-    </FrameLayout>
+
+    </ScrollView>
 
 </LinearLayout>

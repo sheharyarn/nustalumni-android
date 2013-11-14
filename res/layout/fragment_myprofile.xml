@@ -34,11 +34,30 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp" >
 
-                    <ImageView
-                        android:id="@+id/myprofile_image"
+                    <FrameLayout
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/nust_login" />
+                        android:layout_height="100dp" >
+
+                        <ImageView
+                            android:id="@+id/myprofile_image"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/nust_login" />
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|right"
+                            android:background="#10ffffff"
+                            android:gravity="right"
+                            android:text="Change Image..."
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@android:color/holo_blue_light"
+                            android:textSize="12sp"
+                            android:textStyle="italic" />
+
+                    </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"

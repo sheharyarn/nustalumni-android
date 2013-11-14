@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
 	TextView title;
 	TextView content;
 	TextView readmore;
+	Boolean loadedall = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,28 +34,41 @@ public class HomeFragment extends Fragment {
     	readmore = (TextView)homeView.findViewById(R.id.home_readmore);
     	
     	readmore.setOnClickListener(new OnClickListener(){
-    		public void onClick(View arg0) { ShowFullContent(); }
+    		public void onClick(View arg0) {
+    			if (loadedall)
+    				InflateHomeData(false);
+    			else
+    				InflateHomeData(true);
+    		}
     	});
     	
     	emptyloader = (ProgressBar)homeView.findViewById(R.id.home_loader);
     	layout = (LinearLayout)homeView.findViewById(R.id.home_layout);
     	
-    	InflateHomeData(); 
+    	InflateHomeData(false); 
     	ParseHomeData();
     	
     	return homeView;
     }
     
-    public void InflateHomeData() {
+    public void InflateHomeData(Boolean loadfull) {
     	if (ParseValues.home_title == null) {
     		layout.setVisibility(LinearLayout.GONE);
     		emptyloader.setVisibility(ProgressBar.VISIBLE);
     	} else {
     		layout.setVisibility(LinearLayout.VISIBLE);
     		emptyloader.setVisibility(ProgressBar.GONE);
-    		
     		title.setText(ParseValues.home_title);
-    		content.setText(ParseValues.home_content.substring(0, ParseValues.home_content.indexOf("\n\n")));
+    		
+    		if (loadfull) {
+    			readmore.setText("Show Less...");
+        		content.setText(ParseValues.home_content);
+    			loadedall = true;
+    		} else {
+    			readmore.setText("Show More...");
+        		content.setText(ParseValues.home_content.substring(0, ParseValues.home_content.indexOf("\n\n")));
+        		loadedall = false;
+    		}
         }
     } 
     
@@ -70,7 +84,7 @@ public class HomeFragment extends Fragment {
 	        	try {
 	    			ParseValues.home_title = response.getString("title");
 	    			ParseValues.home_content = response.getString("content");
-	    			InflateHomeData();
+	    			InflateHomeData(false);
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
@@ -82,12 +96,6 @@ public class HomeFragment extends Fragment {
 			}
 		});
     }
-    
-    public void ShowFullContent() {
-    	
-    }
-    
-
 	
 	public void ErrorAlert(String message) {
 		new AlertDialog.Builder(getActivity())
