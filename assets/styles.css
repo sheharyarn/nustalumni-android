@@ -2,21 +2,22 @@
 
 body {
 	padding: 15px 15px 15px 15px;
+	background-image: url('nust_bg.jpg');
 }
 
-ul,li,ol,p {
-	color: #666666;
+ul,li,ol,p,span {
+	color: #cccccc;
 	text-align: justify;
 }
 
 h1, h2, h3, h4, h5 {
-	color: #666666;
+	color: #cccccc;
 	padding-top: 20px;
 }
 
 h1 {
 	color: #0099cc;
-	font-size: 22px;
+	font-size: 24px;
 }
 
 h2 {
@@ -25,15 +26,6 @@ h2 {
 
 h3 {
 	font-size: 18px;
-}
-
-h2.title {
-	margin: 0px 0px 10px 0px;
-	padding: 0px 0px 0px 0px;
-	color: #666666;
-	font-family: "Roboto Lt";
-	font-size: 26px;
-	text-align:left;
 }
 
 a {
@@ -48,9 +40,7 @@ h6.title {
 }
 
 h6.title span {
-/**	color: #666666;  /** Dark Gray **/
-	color: #289108;
-	padding
+	color: #0099cc;
 }
 
 img {
@@ -62,8 +52,8 @@ img {
 
 div.separator {
 	height: 1px;
-	background: #cccccc;
-	border-bottom: 1px solid #cccccc;
+	background: #666666;
+	border-bottom: 1px solid #666666;
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 }
