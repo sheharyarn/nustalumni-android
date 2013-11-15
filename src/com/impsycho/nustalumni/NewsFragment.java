@@ -7,11 +7,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -29,6 +32,15 @@ public class NewsFragment extends Fragment {
     	emptyloader = (ProgressBar)newsView.findViewById(R.id.news_loader);
     	newslist = (ListView)newsView.findViewById(R.id.news_list);
     	
+    	newslist.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	            Intent newsarticle = new Intent(getActivity(), NewsActivity.class);
+	            newsarticle.putExtra(NewsActivity.POST_ID, position);
+	            startActivity(newsarticle);
+			}
+    	});
+
     	InflateNewsData(); 
     	ParseNewsData();
     	
@@ -60,6 +72,7 @@ public class NewsFragment extends Fragment {
 	        	try {
         			ParseValues.news_titles   = new ArrayList<String>();
         			ParseValues.news_dates    = new ArrayList<String>();
+        			ParseValues.news_urls    = new ArrayList<String>();
         			ParseValues.news_images   = new ArrayList<String>();
         			ParseValues.news_contents = new ArrayList<String>();
         			
@@ -67,6 +80,7 @@ public class NewsFragment extends Fragment {
 	        			JSONObject item = response.getJSONObject(i);
 	        			ParseValues.news_titles.add(item.getString("title"));
 	        			ParseValues.news_dates.add(item.getString("date"));
+	        			ParseValues.news_urls.add(item.getString("url"));
 	        			ParseValues.news_images.add(item.getString("image"));
 	        			ParseValues.news_contents.add(item.getString("content"));
 	        		}

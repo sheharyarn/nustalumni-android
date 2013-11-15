@@ -5,7 +5,7 @@
     <string name="app_version">v0.1.2</string>
     <string name="app_version_detail">App Version: v0.1.2</string>
     <string name="action_settings">Settings</string>
-    
+
     <string-array name="menuitems">
         <item>Home</item>
         <item>News</item>
@@ -15,15 +15,17 @@
         <item>About</item>
         <item>Sign Out</item>
     </string-array>
-    
     <string-array name="bool">
         <item>False</item>
         <item>True</item>
     </string-array>
-    
     <string-array name="professional_status">
         <item>Seeking Jobs</item>
         <item>Seeking Employees</item>
         <item>Seeking Connections</item>
     </string-array>
+
+    <string name="title_activity_news">News Article</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>

@@ -1,0 +1,69 @@
+/** CSS **/
+
+body {
+	padding: 15px 15px 15px 15px;
+}
+
+ul,li,ol,p {
+	color: #666666;
+	text-align: justify;
+}
+
+h1, h2, h3, h4, h5 {
+	color: #666666;
+	padding-top: 20px;
+}
+
+h1 {
+	color: #0099cc;
+	font-size: 22px;
+}
+
+h2 {
+	font-size: 20px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h2.title {
+	margin: 0px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+	color: #666666;
+	font-family: "Roboto Lt";
+	font-size: 26px;
+	text-align:left;
+}
+
+a {
+	color: #0099cc;
+}
+
+
+h6.title {
+	color: #999999;
+	margin: 5px 0 3px 0;
+	padding: 0 0 0 0;
+}
+
+h6.title span {
+/**	color: #666666;  /** Dark Gray **/
+	color: #289108;
+	padding
+}
+
+img {
+	text-align:center;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+div.separator {
+	height: 1px;
+	background: #cccccc;
+	border-bottom: 1px solid #cccccc;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}

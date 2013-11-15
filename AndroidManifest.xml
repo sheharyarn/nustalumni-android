@@ -27,8 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.impsycho.nustalumni.MainActivity" >
+        </activity>
         <activity
-            android:name="com.impsycho.nustalumni.MainActivity" >
+            android:name="com.impsycho.nustalumni.NewsActivity"
+            android:label="@string/title_activity_news" >
         </activity>
     </application>
 

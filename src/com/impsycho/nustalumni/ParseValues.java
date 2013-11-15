@@ -12,6 +12,7 @@ public class ParseValues {
 	public static Boolean hasNews = false;
 	public static ArrayList<String> news_titles;
 	public static ArrayList<String> news_dates;
+	public static ArrayList<String> news_urls;
 	public static ArrayList<String> news_contents;
 	public static ArrayList<String> news_images;
 	
