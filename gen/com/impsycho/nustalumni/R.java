@@ -195,11 +195,12 @@ containing a value of this type.
         public static final int naa_logo_small=0x7f020020;
         public static final int nust_bg=0x7f020021;
         public static final int nust_login=0x7f020022;
+        public static final int row_arrow=0x7f020023;
     }
     public static final class id {
         public static final int about_linknust=0x7f060010;
         public static final int about_linkpsycho=0x7f060011;
-        public static final int action_settings=0x7f060036;
+        public static final int action_settings=0x7f06003c;
         public static final int content_frame=0x7f06000e;
         public static final int drawer_layout=0x7f06000d;
         public static final int faq_layout=0x7f060013;
@@ -214,6 +215,7 @@ containing a value of this type.
         public static final int hybrid=0x7f060004;
         public static final int imageView1=0x7f060005;
         public static final int left_drawer=0x7f06000f;
+        public static final int linearLayout1=0x7f060036;
         public static final int login_button=0x7f06000b;
         public static final int login_edit_email=0x7f060007;
         public static final int login_edit_name=0x7f060006;
@@ -237,17 +239,22 @@ containing a value of this type.
         public static final int myprofile_loader=0x7f06001c;
         public static final int myprofile_profstatus=0x7f060025;
         public static final int myprofile_update=0x7f06002c;
+        public static final int news_list=0x7f06002e;
+        public static final int news_loader=0x7f06002d;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
-        public static final int pager=0x7f06002d;
-        public static final int pager_title_strip=0x7f06002e;
-        public static final int people_list=0x7f060030;
-        public static final int people_loader=0x7f06002f;
-        public static final int row_answer=0x7f060032;
-        public static final int row_person_discipline=0x7f060035;
-        public static final int row_person_image=0x7f060033;
-        public static final int row_person_name=0x7f060034;
-        public static final int row_question=0x7f060031;
+        public static final int pager=0x7f06002f;
+        public static final int pager_title_strip=0x7f060030;
+        public static final int people_list=0x7f060032;
+        public static final int people_loader=0x7f060031;
+        public static final int row_answer=0x7f060034;
+        public static final int row_news_date=0x7f060038;
+        public static final int row_news_image=0x7f060035;
+        public static final int row_news_title=0x7f060037;
+        public static final int row_person_discipline=0x7f06003b;
+        public static final int row_person_image=0x7f060039;
+        public static final int row_person_name=0x7f06003a;
+        public static final int row_question=0x7f060033;
         public static final int satellite=0x7f060002;
         public static final int scrollView1=0x7f060015;
         public static final int terrain=0x7f060003;
@@ -262,10 +269,12 @@ containing a value of this type.
         public static final int fragment_faq=0x7f030005;
         public static final int fragment_home=0x7f030006;
         public static final int fragment_myprofile=0x7f030007;
-        public static final int fragment_people_pager=0x7f030008;
-        public static final int fragment_people_section=0x7f030009;
-        public static final int row_faq=0x7f03000a;
-        public static final int row_person=0x7f03000b;
+        public static final int fragment_news=0x7f030008;
+        public static final int fragment_people_pager=0x7f030009;
+        public static final int fragment_people_section=0x7f03000a;
+        public static final int row_faq=0x7f03000b;
+        public static final int row_news=0x7f03000c;
+        public static final int row_person=0x7f03000d;
     }
     public static final class menu {
         public static final int login=0x7f0b0000;

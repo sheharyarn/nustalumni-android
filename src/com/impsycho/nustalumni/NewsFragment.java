@@ -18,58 +18,61 @@ import android.widget.ProgressBar;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class FAQFragment extends Fragment {
-	static ListView faqlist;
+public class NewsFragment extends Fragment {
+	static ListView newslist;
 	ProgressBar emptyloader;
-	LinearLayout layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	View homeView = inflater.inflate(R.layout.fragment_faq, container, false);
+    	View newsView = inflater.inflate(R.layout.fragment_news, container, false);
     	
-    	emptyloader = (ProgressBar)homeView.findViewById(R.id.faq_loader);
-    	faqlist = (ListView)homeView.findViewById(R.id.faq_list);
-    	layout = (LinearLayout)homeView.findViewById(R.id.faq_layout);
+    	emptyloader = (ProgressBar)newsView.findViewById(R.id.news_loader);
+    	newslist = (ListView)newsView.findViewById(R.id.news_list);
     	
-    	InflateFAQData(); 
-    	ParseFAQData();
+    	InflateNewsData(); 
+    	ParseNewsData();
     	
-    	return homeView;
+    	return newsView;
     }
     
-    public void InflateFAQData() {
-    	if (ParseValues.faq_questions == null) {
-    		layout.setVisibility(LinearLayout.GONE);
+    public void InflateNewsData() {
+    	if (!ParseValues.hasNews) {
+    		newslist.setVisibility(LinearLayout.GONE);
     		emptyloader.setVisibility(ProgressBar.VISIBLE);
     	} else {
-    		layout.setVisibility(LinearLayout.VISIBLE);
+    		newslist.setVisibility(LinearLayout.VISIBLE);
     		emptyloader.setVisibility(ProgressBar.GONE);
     		
-    		faqlist.setAdapter(new FAQRowAdapter(getActivity().getApplicationContext(), ParseValues.faq_questions.toArray(new String[ParseValues.faq_questions.size()])));
+    		newslist.setAdapter(new NewsRowAdapter(getActivity().getApplicationContext(), ParseValues.news_titles.toArray(new String[ParseValues.news_titles.size()])));
 
         }
     } 
     
-    public void ParseFAQData() {
-    	if (ParseValues.faq_questions == null)
-    		ForceParseFAQData();
+    public void ParseNewsData() {
+    	if (!ParseValues.hasNews)
+    		ForceParseNewsData();
     }
     
-    public void ForceParseFAQData() {
-    	APIclient.get("/data/faq/", null, new JsonHttpResponseHandler() {
+    public void ForceParseNewsData() {
+    	APIclient.get("/data/news/", null, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray response) {
 	        	try {
-        			ParseValues.faq_questions = new ArrayList<String>();
-        			ParseValues.faq_answers   = new ArrayList<String>();
+        			ParseValues.news_titles   = new ArrayList<String>();
+        			ParseValues.news_dates    = new ArrayList<String>();
+        			ParseValues.news_images   = new ArrayList<String>();
+        			ParseValues.news_contents = new ArrayList<String>();
         			
 	        		for (int i=0; i<response.length(); i++) {
 	        			JSONObject item = response.getJSONObject(i);
-	        			ParseValues.faq_questions.add(item.getString("question"));
-	        			ParseValues.faq_answers.add(item.getString("answer"));
+	        			ParseValues.news_titles.add(item.getString("title"));
+	        			ParseValues.news_dates.add(item.getString("date"));
+	        			ParseValues.news_images.add(item.getString("image"));
+	        			ParseValues.news_contents.add(item.getString("content"));
 	        		}
 	        		
-	    			InflateFAQData();
+	        		ParseValues.hasNews = true;
+	    			InflateNewsData();
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			

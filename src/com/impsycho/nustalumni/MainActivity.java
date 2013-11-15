@@ -87,6 +87,8 @@ public class MainActivity extends FragmentActivity {
         	String option = MenuItemList[position];
             if (option.equals("Home"))
             	LoadHomeFragment();
+            else if (option.equals("News"))
+            	LoadNewsFragment();
             else if (option.equals("People"))
             	LoadPeopleFragment();
             else if (option.equals("Profile"))
@@ -109,6 +111,7 @@ public class MainActivity extends FragmentActivity {
     
     // ==== Fragment Loaders
     public void LoadHomeFragment()     { LoadMyFragment(new HomeFragment());      }
+    public void LoadNewsFragment()     { LoadMyFragment(new NewsFragment());      }
     public void LoadPeopleFragment()   { LoadMyFragment(new PeopleFragment());    }    
     public void LoadProfileFragment()  { LoadMyFragment(new MyProfileFragment()); }    
     public void LoadFAQFragment()      { LoadMyFragment(new FAQFragment());       }    
