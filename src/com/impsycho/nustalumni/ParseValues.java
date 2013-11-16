@@ -19,6 +19,7 @@ public class ParseValues {
 	public static Boolean hasPeople = false;
 	public static ArrayList<ArrayList<String>> people_names;
 	public static ArrayList<ArrayList<String>> people_emails;
+	public static ArrayList<ArrayList<String>> people_images;
 	public static ArrayList<ArrayList<String>> people_disciplines;
 	
 }

@@ -99,7 +99,8 @@ int id myprofile_discipline 0x7f060025
 int id myprofile_email 0x7f060023
 int id myprofile_firstname 0x7f060021
 int id myprofile_graduate 0x7f06002a
-int id myprofile_image 0x7f06001f
+int id myprofile_image 0x7f060020
+int id myprofile_imagebox 0x7f06001f
 int id myprofile_jobcompany 0x7f06002b
 int id myprofile_jobposition 0x7f06002c
 int id myprofile_lastname 0x7f060022
@@ -127,7 +128,6 @@ int id row_question 0x7f060034
 int id satellite 0x7f060002
 int id scrollView1 0x7f060016
 int id terrain 0x7f060003
-int id textView1 0x7f060020
 int layout activity_login 0x7f030000
 int layout activity_main 0x7f030001
 int layout activity_news 0x7f030002

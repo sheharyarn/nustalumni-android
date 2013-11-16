@@ -35,7 +35,6 @@ public class NewsRowAdapter extends ArrayAdapter<String>{
 		title.setText(order_data[position]);
 		date.setText(ParseValues.news_dates.get(position));
 		
-		
 		DisplayImageOptions options = new DisplayImageOptions.Builder()
 	        .cacheInMemory(true)
 	        .cacheOnDisc(true)

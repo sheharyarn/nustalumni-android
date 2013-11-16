@@ -232,7 +232,8 @@ containing a value of this type.
         public static final int myprofile_email=0x7f060023;
         public static final int myprofile_firstname=0x7f060021;
         public static final int myprofile_graduate=0x7f06002a;
-        public static final int myprofile_image=0x7f06001f;
+        public static final int myprofile_image=0x7f060020;
+        public static final int myprofile_imagebox=0x7f06001f;
         public static final int myprofile_jobcompany=0x7f06002b;
         public static final int myprofile_jobposition=0x7f06002c;
         public static final int myprofile_lastname=0x7f060022;
@@ -260,7 +261,6 @@ containing a value of this type.
         public static final int satellite=0x7f060002;
         public static final int scrollView1=0x7f060016;
         public static final int terrain=0x7f060003;
-        public static final int textView1=0x7f060020;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;

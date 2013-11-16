@@ -35,6 +35,7 @@
                     android:layout_marginTop="30dp" >
 
                     <FrameLayout
+                        android:id="@+id/myprofile_imagebox"
                         android:layout_width="100dp"
                         android:layout_height="100dp" >
 
@@ -45,7 +46,6 @@
                             android:src="@drawable/nust_login" />
 
                         <TextView
-                            android:id="@+id/textView1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|right"

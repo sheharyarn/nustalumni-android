@@ -56,6 +56,7 @@ public class PeopleFragment extends Fragment {
 	        	try {
         			ParseValues.people_names       = new ArrayList<ArrayList<String>>();
         			ParseValues.people_emails      = new ArrayList<ArrayList<String>>();
+        			ParseValues.people_images      = new ArrayList<ArrayList<String>>();
         			ParseValues.people_disciplines = new ArrayList<ArrayList<String>>();
 
         			JSONArray people[] = new JSONArray[3];
@@ -67,12 +68,14 @@ public class PeopleFragment extends Fragment {
         			for (int pi=0; pi<3; pi++) {
         				ParseValues.people_names.add(new ArrayList<String>());
         				ParseValues.people_emails.add(new ArrayList<String>());
+        				ParseValues.people_images.add(new ArrayList<String>());
         				ParseValues.people_disciplines.add(new ArrayList<String>());
         				
 		        		for (int i=0; i<people[pi].length(); i++) {
 		        			JSONObject item = people[pi].getJSONObject(i);
 		        			ParseValues.people_names.get(pi).add(item.getString("name"));
 		        			ParseValues.people_emails.get(pi).add(item.getString("email"));
+		        			ParseValues.people_images.get(pi).add(item.getString("image"));
 		        			ParseValues.people_disciplines.get(pi).add(item.getString("discipline"));
 		        		}
         			}

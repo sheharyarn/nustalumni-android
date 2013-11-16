@@ -7,11 +7,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -27,6 +32,25 @@ public class MyProfileFragment extends Fragment {
     	
     	emptyloader = (ProgressBar)profileView.findViewById(R.id.myprofile_loader);
     	layout = (LinearLayout)profileView.findViewById(R.id.myprofile_layout);
+    	
+    	FrameLayout imagebox = (FrameLayout)profileView.findViewById(R.id.myprofile_imagebox);
+    	imagebox.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				new AlertDialog.Builder(getActivity())
+			    .setTitle("Gravatar")
+			    .setMessage("This app uses 'Gravatar' to show Profile Pictures. To add or change your Profile Picture, visit the Gravatar Website.\n\n Go to the Website now?")
+			    .setNegativeButton("Not Now", null)
+			    .setPositiveButton("Open Gravatar", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface arg0, int arg1) {
+		            	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://en.gravatar.com/"));
+		        		startActivity(browserIntent);
+					}
+				})
+			    .show();
+			}
+    		
+    	});
     	
 /*    	InflateFAQData(); 
     	ParseFAQData();*/
