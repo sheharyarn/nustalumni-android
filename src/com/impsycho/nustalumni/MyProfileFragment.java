@@ -6,8 +6,10 @@ import org.json.JSONObject;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -129,9 +132,7 @@ public class MyProfileFragment extends Fragment {
 	        	        .build();
 	        		ImageLoader.getInstance().displayImage(response.getString("image"), image, options);
 	        		
-	        		emptyloader.setVisibility(ProgressBar.GONE);
-	        		layout.setVisibility(LinearLayout.VISIBLE);
-	        		
+	        		FinishUpdateProcedure();
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
@@ -145,11 +146,84 @@ public class MyProfileFragment extends Fragment {
     }
     
     public void ChangePassword() {
-    	
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean(LoginActivity.USER_SAVED, false);
+		editor.putString(LoginActivity.USER_EMAIL, "");
+		editor.putString(LoginActivity.USER_PASS, "");
+		editor.commit();    	
     }
     
     public void UpdateUserData() {
+    	StartUpdateProcedure();
+		RequestParams params = new RequestParams();
+		params.put("name_first",          namefirst.getText().toString());
+		params.put("name_last",           namelast.getText().toString());
+		params.put("campus",              campus.getText().toString());
+		params.put("discipline",          discipline.getText().toString());
+		params.put("job_company",         jobcompany.getText().toString());
+		params.put("job_position",        jobposition.getText().toString());
+		params.put("course",              course.getText().toString());
+		params.put("course_year",         courseyear.getText().toString());
+
+		params.put("graduate",            GraduateStatus(graduate.getSelectedItem().toString()));
+		params.put("professional_status", GetStatusFrom(status.getSelectedItem().toString()));
+		
+		APIclient.post("/user/", params, new JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(JSONObject response) {
+				new AlertDialog.Builder(getActivity())
+				    .setTitle("Success!")
+				    .setMessage("Your Profile Details have been Successfully Saved")
+				    .setPositiveButton("OK", null)
+				    .show();
+			}
+			
+			@Override
+			public void onFailure(Throwable e, JSONObject response) {
+	        	try {
+	    			ErrorAlert(LoginActivity.Capitalize(response.getString("error")));
+	        	} catch (JSONException e1) { e1.printStackTrace(); }
+			}
+			
+			@Override
+			public void onFinish() { FinishUpdateProcedure(); }
+		});
     	
+    }
+    
+    public void FinishUpdateProcedure() {
+		emptyloader.setVisibility(ProgressBar.GONE);
+		layout.setVisibility(LinearLayout.VISIBLE);	
+    }
+    
+    public void StartUpdateProcedure() {
+		emptyloader.setVisibility(ProgressBar.VISIBLE);
+		layout.setVisibility(LinearLayout.GONE);
+    }
+    
+    public String GetStatusFrom(String item) {
+    	String[] states = getResources().getStringArray(R.array.professional_status);
+
+    	if (item.equals(states[0]))
+    		return "0";
+    	else if (item.equals(states[1]))
+    		return "1";
+    	else if (item.equals(states[2]))
+    		return "2";
+    	
+    	return "0";	
+    }
+    
+    public String GraduateStatus(String item) {
+    	String[] states = getResources().getStringArray(R.array.bool);
+
+    	if (item.equals(states[0]))
+    		return "0";
+    	else if (item.equals(states[1]))
+    		return "1";
+    	
+    	return "0";	
     }
 	
 	public void ErrorAlert(String message) {
@@ -158,6 +232,5 @@ public class MyProfileFragment extends Fragment {
 	    .setMessage(message)
 	    .setNegativeButton("Cancel", null)
 	    .show();
-		
 	}
 }

@@ -53,8 +53,11 @@ public class LoginActivity extends Activity {
 		});
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		if (prefs.getBoolean(USER_SAVED, false))
-			LoginUser(prefs.getString(USER_EMAIL, ""), prefs.getString(USER_PASS, ""));
+		if (prefs.getBoolean(USER_SAVED, false)) {
+			user_email.setText(prefs.getString(USER_EMAIL, ""));
+			user_pass.setText(prefs.getString(USER_PASS, ""));
+			LoginUser();
+		}
 	}
 
 	public void ReverseLoginMode() {
@@ -183,6 +186,7 @@ public class LoginActivity extends Activity {
 	}
 	
 	public void StartLoginProcedure() {
+		progressbar.setVisibility(ProgressBar.VISIBLE);
 		user_email.setEnabled(false);
 		user_name.setEnabled(false);
 		user_pass.setEnabled(false);
