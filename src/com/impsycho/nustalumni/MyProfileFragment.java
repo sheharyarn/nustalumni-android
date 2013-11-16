@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -146,12 +147,66 @@ public class MyProfileFragment extends Fragment {
     }
     
     public void ChangePassword() {
-    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-		SharedPreferences.Editor editor = prefs.edit();
-		editor.putBoolean(LoginActivity.USER_SAVED, false);
-		editor.putString(LoginActivity.USER_EMAIL, "");
-		editor.putString(LoginActivity.USER_PASS, "");
-		editor.commit();    	
+		final LayoutInflater factory = LayoutInflater.from(getActivity().getApplicationContext());
+        View myview = factory.inflate(R.layout.dialog_password, null);
+
+        final EditText passold  = (EditText) myview.findViewById (R.id.alert_pass_old);
+        final EditText passnew  = (EditText) myview.findViewById (R.id.alert_pass_new);
+        final EditText passnew2 = (EditText) myview.findViewById (R.id.alert_pass_new2);
+        
+        new AlertDialog.Builder(getActivity())
+        	.setTitle("Change Password")
+	  		.setView(myview)
+	  		.setNegativeButton("Cancel", null)
+	  		.setPositiveButton("Change Password", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface arg0, int arg1) {
+					if (passnew.getText().toString().equals(passnew2.getText().toString())) {
+			        	final ProgressDialog pdialog = new ProgressDialog(getActivity());
+			        	pdialog.setCancelable(false);
+			        	pdialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		        		pdialog.setIndeterminate(true);
+		        		pdialog.setProgressNumberFormat(null);
+		        		pdialog.setProgressPercentFormat(null);
+			        	pdialog.show();
+			        	
+						RequestParams params = new RequestParams();
+						params.put("password_old", passold.getText().toString());
+						params.put("password_new", passnew.getText().toString());
+						
+						APIclient.post("/user/password/", params, new JsonHttpResponseHandler() {
+							@Override
+							public void onSuccess(JSONObject response) {
+								pdialog.dismiss();
+				    			try {
+									APIclient.api_auth_token = response.getString("auth_token");
+									new AlertDialog.Builder(getActivity())
+									    .setTitle("Success!")
+									    .setMessage("Your Password has been Successfully Changed!")
+									    .setPositiveButton("OK", null)
+									    .show();
+									
+							    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+									SharedPreferences.Editor editor = prefs.edit();
+									editor.putBoolean(LoginActivity.USER_SAVED, false);
+									editor.putString(LoginActivity.USER_EMAIL, "");
+									editor.putString(LoginActivity.USER_PASS, "");
+									editor.commit();    
+									
+								} catch (JSONException e) { e.printStackTrace(); }
+							}
+							
+							@Override
+							public void onFailure(Throwable e, JSONObject response) {
+								pdialog.dismiss();
+					        	try {
+					    			ErrorAlert(LoginActivity.Capitalize(response.getString("error")));
+					        	} catch (JSONException e1) { e1.printStackTrace(); }
+							}
+						});
+					} else ErrorAlert("\nPasswords Do Not Match!");
+				}
+			})
+    	.show();	
     }
     
     public void UpdateUserData() {
@@ -230,7 +285,7 @@ public class MyProfileFragment extends Fragment {
 		new AlertDialog.Builder(getActivity())
 	    .setTitle("Error")
 	    .setMessage(message)
-	    .setNegativeButton("Cancel", null)
+	    .setNegativeButton("OK", null)
 	    .show();
 	}
 }
