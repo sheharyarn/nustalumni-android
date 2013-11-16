@@ -1,8 +1,10 @@
 package com.impsycho.nustalumni;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -138,6 +140,13 @@ public class MainActivity extends FragmentActivity {
     }
     
     public void Logout() {
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean(LoginActivity.USER_SAVED, false);
+		editor.putString(LoginActivity.USER_EMAIL, "");
+		editor.putString(LoginActivity.USER_PASS, "");
+		editor.commit();
+		
     	APIclient.api_auth_token = null;
 		Intent intent = new Intent(MainActivity.this, LoginActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 

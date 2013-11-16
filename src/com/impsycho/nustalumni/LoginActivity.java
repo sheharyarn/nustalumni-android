@@ -6,7 +6,9 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,7 +20,12 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class LoginActivity extends Activity {
+	public static String USER_SAVED = "user_saved";
+	public static String USER_EMAIL = "user_email";
+	public static String USER_PASS  = "user_password";
+	
 	private Boolean modeIsLogin = true;
+	private SharedPreferences prefs;
 	private ProgressBar progressbar;
 	private TextView changemode;
 	private Button loginbutton;
@@ -31,8 +38,6 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
-		StartSession(false);
 
 		user_email  = (EditText)findViewById(R.id.login_edit_email);
 		user_name   = (EditText)findViewById(R.id.login_edit_name);
@@ -46,6 +51,10 @@ public class LoginActivity extends Activity {
 		changemode.setOnClickListener(new OnClickListener(){
 			public void onClick(View arg0) { ReverseLoginMode(); }
 		});
+
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		if (prefs.getBoolean(USER_SAVED, false))
+			LoginUser(prefs.getString(USER_EMAIL, ""), prefs.getString(USER_PASS, ""));
 	}
 
 	public void ReverseLoginMode() {
@@ -83,21 +92,29 @@ public class LoginActivity extends Activity {
 	}
 	
 	public void LoginUser() {
+		LoginUser(user_email.getText().toString(), user_pass.getText().toString());
+	}
+	
+	public void LoginUser(final String email, final String password) {
+		StartLoginProcedure();
+		
 		RequestParams params = new RequestParams();
-		params.put("email",    user_email.getText().toString());
-		params.put("password", user_pass.getText().toString());
+		params.put("email",    email);
+		params.put("password", password);
 		
 		APIclient.post("/user/login/", params, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
 	        	try {
 	    			APIclient.api_auth_token = response.getString("auth_token");
+	    			SaveUserInSettings(email, password);
 	    			StartSession(false);
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
 			@Override
 			public void onFailure(Throwable e, JSONObject response) {
+				DeleteUserFromSettings();
 	        	try {
 	    			ErrorAlert(Capitalize(response.getString("error")));
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
@@ -107,24 +124,31 @@ public class LoginActivity extends Activity {
 			public void onFinish() { FinishLoginProcedure(); }
 		});
 	}
-	
+
 	public void NewUser() {
+		NewUser(user_email.getText().toString(), user_pass.getText().toString(), user_name.getText().toString());
+	}
+	
+	public void NewUser(final String email, final String password, String name) {
+		StartLoginProcedure();
 		RequestParams params = new RequestParams();
-		params.put("email",    user_email.getText().toString());
-		params.put("name",     user_name.getText().toString());
-		params.put("password", user_pass.getText().toString());
+		params.put("email",    email);
+		params.put("name",     name);
+		params.put("password", password);
 		
 		APIclient.post("/user/new/", params, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
 	        	try {
 	    			APIclient.api_auth_token = response.getString("auth_token");
+	    			SaveUserInSettings(email, password);
 	    			StartSession(true);
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
 			}
 			
 			@Override
 			public void onFailure(Throwable e, JSONObject response) {
+				DeleteUserFromSettings();
 	        	try {
 	    			ErrorAlert(Capitalize(response.getString("error")));
 	        	} catch (JSONException e1) { e1.printStackTrace(); }
@@ -139,7 +163,7 @@ public class LoginActivity extends Activity {
 		new AlertDialog.Builder(this)
 	    .setTitle("Error")
 	    .setMessage(message)
-	    .setNegativeButton("Try Again", null)
+	    .setNegativeButton("OK", null)
 	    .show();
 		
 		FinishLoginProcedure();
@@ -147,6 +171,44 @@ public class LoginActivity extends Activity {
 	
 	public void FinishLoginProcedure() {
 		progressbar.setVisibility(ProgressBar.INVISIBLE);
+		user_email.setEnabled(true);
+		user_name.setEnabled(true);
+		user_pass.setEnabled(true);
+		user_pass2.setEnabled(true);
+		loginbutton.setEnabled(true);
+
+		changemode.setOnClickListener(new OnClickListener(){
+			public void onClick(View arg0) { ReverseLoginMode(); }
+		});
+	}
+	
+	public void StartLoginProcedure() {
+		user_email.setEnabled(false);
+		user_name.setEnabled(false);
+		user_pass.setEnabled(false);
+		user_pass2.setEnabled(false);
+		loginbutton.setEnabled(false);
+
+		changemode.setOnClickListener(new OnClickListener(){
+			public void onClick(View arg0) { }
+		});
+	}
+	
+	public void SaveUserInSettings(String email, String password) {
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean(USER_SAVED, true);
+		editor.putString(USER_EMAIL, email);
+		editor.putString(USER_PASS, password);
+		editor.commit();		
+	}
+	
+	public void DeleteUserFromSettings() {
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean(USER_SAVED, false);
+		editor.putString(USER_EMAIL, "");
+		editor.putString(USER_PASS, "");
+		editor.commit();
+		
 	}
 	
 	public static String Capitalize(String input) {
