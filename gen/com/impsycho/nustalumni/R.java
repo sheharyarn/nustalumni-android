@@ -191,11 +191,13 @@ containing a value of this type.
         public static final int dev_pressed=0x7f02001c;
         public static final int ic_drawer=0x7f02001d;
         public static final int ic_launcher=0x7f02001e;
-        public static final int naa_logo=0x7f02001f;
-        public static final int naa_logo_small=0x7f020020;
-        public static final int nust_bg=0x7f020021;
-        public static final int nust_login=0x7f020022;
-        public static final int row_arrow=0x7f020023;
+        public static final int ic_launcher_nust=0x7f02001f;
+        public static final int ic_nust=0x7f020020;
+        public static final int naa_logo=0x7f020021;
+        public static final int naa_logo_small=0x7f020022;
+        public static final int nust_bg=0x7f020023;
+        public static final int nust_login=0x7f020024;
+        public static final int row_arrow=0x7f020025;
     }
     public static final class id {
         public static final int about_linknust=0x7f060014;

@@ -14,7 +14,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher_nust"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:theme="@style/NustTheme" >
@@ -24,15 +24,17 @@
             android:theme="@android:style/Theme.Holo.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.impsycho.nustalumni.MainActivity" >
+        <activity 
+            android:name="com.impsycho.nustalumni.MainActivity"
+            android:icon="@drawable/ic_nust" >
         </activity>
         <activity
             android:name="com.impsycho.nustalumni.NewsActivity"
-            android:label="@string/title_activity_news" >
+            android:label="@string/title_activity_news"
+            android:icon="@drawable/ic_nust" >
         </activity>
     </application>
 
