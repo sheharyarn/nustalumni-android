@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
     }
     
     public void ForceParseHomeData() {
-    	APIclient.get("/data/home/", null, new JsonHttpResponseHandler() {
+    	APIclient.get("/data/home/", null, getActivity(), new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
 	        	try {

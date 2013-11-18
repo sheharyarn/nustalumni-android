@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +18,8 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -50,7 +53,7 @@ public class PeopleFragment extends Fragment {
     }
     
     public void ForceParsePeopleData() {
-    	APIclient.get("/data/people/", null, new JsonHttpResponseHandler() {
+    	APIclient.get("/data/people/", null, getActivity(), new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
 	        	try {
@@ -130,7 +133,7 @@ public class PeopleFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_people_section, container, false);
-            int pos = getArguments().getInt(ARG_POSITION);
+            final int pos = getArguments().getInt(ARG_POSITION);
             
         	ListView peoplelist = (ListView)rootView.findViewById(R.id.people_list);
         	ProgressBar loader  = (ProgressBar)rootView.findViewById(R.id.people_loader);
@@ -143,7 +146,17 @@ public class PeopleFragment extends Fragment {
 	        			new String[ParseValues.people_names.get(pos).size()]
 	        		),
 	        		pos
-	        	));	
+	        	));
+
+	        	peoplelist.setOnItemClickListener(new OnItemClickListener(){
+	    			@Override
+	    			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	    	            Intent newsarticle = new Intent(getActivity(), ProfileActivity.class);
+	    	            newsarticle.putExtra(ProfileActivity.USER_EMAIL, ParseValues.people_emails.get(pos).get(position));
+	    	            startActivity(newsarticle);
+	    			}
+	        	});
+
             } else {
             	loader.setVisibility(ProgressBar.VISIBLE);
             }

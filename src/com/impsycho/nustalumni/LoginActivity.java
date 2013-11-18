@@ -105,7 +105,7 @@ public class LoginActivity extends Activity {
 		params.put("email",    email);
 		params.put("password", password);
 		
-		APIclient.post("/user/login/", params, new JsonHttpResponseHandler() {
+		APIclient.post("/user/login/", params, LoginActivity.this, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
 	        	try {
@@ -139,7 +139,7 @@ public class LoginActivity extends Activity {
 		params.put("name",     name);
 		params.put("password", password);
 		
-		APIclient.post("/user/new/", params, new JsonHttpResponseHandler() {
+		APIclient.post("/user/new/", params, LoginActivity.this,  new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
 	        	try {
@@ -225,5 +225,5 @@ public class LoginActivity extends Activity {
         getApplicationContext().startActivity(intent);
         finish();
 	}
-
+	
 }

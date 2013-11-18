@@ -27,5 +27,6 @@
 
     <string name="title_activity_news">News Article</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_profile">View Profile</string>
 
 </resources>

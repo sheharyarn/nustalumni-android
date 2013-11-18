@@ -29,7 +29,7 @@ public class PeopleRowAdapter extends ArrayAdapter<String>{
  
 		View rowView;
 		rowView = inflater.inflate(R.layout.row_person, parent, false);
-
+				
 		final TextView name       = (TextView)  rowView.findViewById (R.id.row_person_name);
 		final TextView discipline = (TextView)  rowView.findViewById (R.id.row_person_discipline);
 		final ImageView image     = (ImageView) rowView.findViewById (R.id.row_person_image);
@@ -42,7 +42,7 @@ public class PeopleRowAdapter extends ArrayAdapter<String>{
 	        .cacheOnDisc(true)
 	        .build();
 		ImageLoader.getInstance().displayImage(ParseValues.people_images.get(pos).get(position), image, options);
-	
+		
 		return rowView;
 	}
 

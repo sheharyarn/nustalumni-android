@@ -66,7 +66,7 @@ public class NewsFragment extends Fragment {
     }
     
     public void ForceParseNewsData() {
-    	APIclient.get("/data/news/", null, new JsonHttpResponseHandler() {
+    	APIclient.get("/data/news/", null, getActivity(), new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray response) {
 	        	try {

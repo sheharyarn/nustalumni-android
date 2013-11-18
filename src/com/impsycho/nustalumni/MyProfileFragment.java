@@ -110,7 +110,7 @@ public class MyProfileFragment extends Fragment {
     }
     
     public void GetProfileData() {
-    	APIclient.get("/user/", null, new JsonHttpResponseHandler() {
+    	APIclient.get("/user/", null, getActivity(), new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
 	        	try {
@@ -173,7 +173,7 @@ public class MyProfileFragment extends Fragment {
 						params.put("password_old", passold.getText().toString());
 						params.put("password_new", passnew.getText().toString());
 						
-						APIclient.post("/user/password/", params, new JsonHttpResponseHandler() {
+						APIclient.post("/user/password/", params, getActivity(), new JsonHttpResponseHandler() {
 							@Override
 							public void onSuccess(JSONObject response) {
 								pdialog.dismiss();
@@ -224,7 +224,7 @@ public class MyProfileFragment extends Fragment {
 		params.put("graduate",            GraduateStatus(graduate.getSelectedItem().toString()));
 		params.put("professional_status", GetStatusFrom(status.getSelectedItem().toString()));
 		
-		APIclient.post("/user/", params, new JsonHttpResponseHandler() {
+		APIclient.post("/user/", params, getActivity(), new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
 				new AlertDialog.Builder(getActivity())

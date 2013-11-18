@@ -56,7 +56,7 @@ public class FAQFragment extends Fragment {
     }
     
     public void ForceParseFAQData() {
-    	APIclient.get("/data/faq/", null, new JsonHttpResponseHandler() {
+    	APIclient.get("/data/faq/", null, getActivity(), new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray response) {
 	        	try {

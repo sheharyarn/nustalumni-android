@@ -202,7 +202,7 @@ containing a value of this type.
     public static final class id {
         public static final int about_linknust=0x7f060014;
         public static final int about_linkpsycho=0x7f060015;
-        public static final int action_settings=0x7f060040;
+        public static final int action_settings=0x7f060041;
         public static final int alert_pass_new=0x7f060012;
         public static final int alert_pass_new2=0x7f060013;
         public static final int alert_pass_old=0x7f060011;
@@ -220,7 +220,7 @@ containing a value of this type.
         public static final int hybrid=0x7f060004;
         public static final int imageView1=0x7f060005;
         public static final int left_drawer=0x7f06000f;
-        public static final int linearLayout1=0x7f06003a;
+        public static final int linearLayout1=0x7f06003b;
         public static final int login_button=0x7f06000b;
         public static final int login_edit_email=0x7f060007;
         public static final int login_edit_name=0x7f060006;
@@ -228,41 +228,42 @@ containing a value of this type.
         public static final int login_edit_password2=0x7f060009;
         public static final int login_progress=0x7f06000c;
         public static final int login_text_create=0x7f06000a;
-        public static final int menu_item_share=0x7f060041;
-        public static final int myprofile_campus=0x7f06002c;
-        public static final int myprofile_changepass=0x7f060027;
-        public static final int myprofile_course=0x7f06002a;
-        public static final int myprofile_courseyear=0x7f06002b;
-        public static final int myprofile_discipline=0x7f060028;
-        public static final int myprofile_email=0x7f060026;
-        public static final int myprofile_firstname=0x7f060024;
-        public static final int myprofile_graduate=0x7f06002d;
+        public static final int menu_item_share=0x7f060042;
+        public static final int myprofile_campus=0x7f06002d;
+        public static final int myprofile_change=0x7f060024;
+        public static final int myprofile_changepass=0x7f060028;
+        public static final int myprofile_course=0x7f06002b;
+        public static final int myprofile_courseyear=0x7f06002c;
+        public static final int myprofile_discipline=0x7f060029;
+        public static final int myprofile_email=0x7f060027;
+        public static final int myprofile_firstname=0x7f060025;
+        public static final int myprofile_graduate=0x7f06002e;
         public static final int myprofile_image=0x7f060023;
         public static final int myprofile_imagebox=0x7f060022;
-        public static final int myprofile_jobcompany=0x7f06002e;
-        public static final int myprofile_jobposition=0x7f06002f;
-        public static final int myprofile_lastname=0x7f060025;
+        public static final int myprofile_jobcompany=0x7f06002f;
+        public static final int myprofile_jobposition=0x7f060030;
+        public static final int myprofile_lastname=0x7f060026;
         public static final int myprofile_layout=0x7f060021;
         public static final int myprofile_loader=0x7f060020;
-        public static final int myprofile_profstatus=0x7f060029;
-        public static final int myprofile_update=0x7f060030;
-        public static final int news_list=0x7f060032;
-        public static final int news_loader=0x7f060031;
+        public static final int myprofile_profstatus=0x7f06002a;
+        public static final int myprofile_update=0x7f060031;
+        public static final int news_list=0x7f060033;
+        public static final int news_loader=0x7f060032;
         public static final int news_webview=0x7f060010;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
-        public static final int pager=0x7f060033;
-        public static final int pager_title_strip=0x7f060034;
-        public static final int people_list=0x7f060036;
-        public static final int people_loader=0x7f060035;
-        public static final int row_answer=0x7f060038;
-        public static final int row_news_date=0x7f06003c;
-        public static final int row_news_image=0x7f060039;
-        public static final int row_news_title=0x7f06003b;
-        public static final int row_person_discipline=0x7f06003f;
-        public static final int row_person_image=0x7f06003d;
-        public static final int row_person_name=0x7f06003e;
-        public static final int row_question=0x7f060037;
+        public static final int pager=0x7f060034;
+        public static final int pager_title_strip=0x7f060035;
+        public static final int people_list=0x7f060037;
+        public static final int people_loader=0x7f060036;
+        public static final int row_answer=0x7f060039;
+        public static final int row_news_date=0x7f06003d;
+        public static final int row_news_image=0x7f06003a;
+        public static final int row_news_title=0x7f06003c;
+        public static final int row_person_discipline=0x7f060040;
+        public static final int row_person_image=0x7f06003e;
+        public static final int row_person_name=0x7f06003f;
+        public static final int row_question=0x7f060038;
         public static final int satellite=0x7f060002;
         public static final int scrollView1=0x7f060019;
         public static final int terrain=0x7f060003;
@@ -289,6 +290,7 @@ containing a value of this type.
         public static final int login=0x7f0b0000;
         public static final int main=0x7f0b0001;
         public static final int news=0x7f0b0002;
+        public static final int profile=0x7f0b0003;
     }
     public static final class string {
         public static final int action_settings=0x7f070018;
@@ -375,6 +377,7 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f07000e;
         public static final int hello_world=0x7f07001a;
         public static final int title_activity_news=0x7f070019;
+        public static final int title_activity_profile=0x7f07001b;
     }
     public static final class style {
         /** 
