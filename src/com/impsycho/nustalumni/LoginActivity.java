@@ -222,7 +222,9 @@ public class LoginActivity extends Activity {
 	public void StartSession(Boolean newuser) {
 		Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
-        getApplicationContext().startActivity(intent);
+		intent.putExtra(NewUserActivity.NEW_USER, newuser);
+        
+		getApplicationContext().startActivity(intent);
         finish();
 	}
 	

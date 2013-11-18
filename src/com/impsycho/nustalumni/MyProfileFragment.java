@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +32,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MyProfileFragment extends Fragment {
+	Boolean newprofile = false;
 	ProgressBar emptyloader;
 	LinearLayout layout;
 
@@ -55,6 +57,13 @@ public class MyProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	View profileView = inflater.inflate(R.layout.fragment_myprofile, container, false);
+ 
+    	if (getArguments() != null) {
+	        if (getArguments().containsKey(NewUserActivity.NEW_USER)) {
+	            newprofile = getArguments().getBoolean(NewUserActivity.NEW_USER);
+	            getArguments().remove(NewUserActivity.NEW_USER);
+	        }
+    	}
     	
     	emptyloader = (ProgressBar)profileView.findViewById(R.id.myprofile_loader);
     	layout = (LinearLayout)profileView.findViewById(R.id.myprofile_layout);
@@ -227,11 +236,15 @@ public class MyProfileFragment extends Fragment {
 		APIclient.post("/user/", params, getActivity(), new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject response) {
-				new AlertDialog.Builder(getActivity())
-				    .setTitle("Success!")
-				    .setMessage("Your Profile Details have been Successfully Saved")
-				    .setPositiveButton("OK", null)
-				    .show();
+				if (newprofile) {
+					getActivity().finish();
+				} else{
+					new AlertDialog.Builder(getActivity())
+					    .setTitle("Success!")
+					    .setMessage("Your Profile Details have been Successfully Saved")
+					    .setPositiveButton("OK", null)
+					    .show();
+				}
 			}
 			
 			@Override

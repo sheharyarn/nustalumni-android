@@ -32,6 +32,16 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		Boolean newuser = getIntent().getBooleanExtra(NewUserActivity.NEW_USER, false);
+		getIntent().removeExtra(NewUserActivity.NEW_USER);
+		
+		if (newuser) {
+			Intent intent = new Intent(MainActivity.this, NewUserActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+	        
+			getApplicationContext().startActivity(intent);
+		}
+		
 		// Lazy Loader
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
 		ImageLoader.getInstance().init(config);
