@@ -114,6 +114,8 @@ public class MainActivity extends FragmentActivity {
             	LoadProfileFragment();
             else if (option.equals("FAQ"))
             	LoadFAQFragment();
+            else if (option.equals("Cause"))
+            	LoadCauseFragment();
             else if (option.equals("About"))
             	LoadAboutFragment();
             else if (option.equals("Settings"))
@@ -134,6 +136,7 @@ public class MainActivity extends FragmentActivity {
     public void LoadPeopleFragment()   { LoadMyFragment(new PeopleFragment());    }    
     public void LoadProfileFragment()  { LoadMyFragment(new MyProfileFragment()); }    
     public void LoadFAQFragment()      { LoadMyFragment(new FAQFragment());       }    
+    public void LoadCauseFragment()    { LoadMyFragment(new CauseFragment());     }    
     public void LoadAboutFragment()    { LoadMyFragment(new AboutFragment());     }
     
     public void LoadMyFragment(Fragment frag) {

@@ -2,8 +2,8 @@
 <resources>
 
     <string name="app_name">NUST Alumni</string>
-    <string name="app_version">v0.1.2</string>
-    <string name="app_version_detail">App Version: v0.1.2</string>
+    <string name="app_version">v0.1.4</string>
+    <string name="app_version_detail">App Version: v0.1.4</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="menuitems">
@@ -12,6 +12,7 @@
         <item>People</item>
         <item>Profile</item>
         <item>FAQ</item>
+        <item>Cause</item>
         <item>About</item>
         <item>Sign Out</item>
     </string-array>
@@ -26,7 +27,6 @@
     </string-array>
 
     <string name="title_activity_news">News Article</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_profile">View Profile</string>
     <string name="title_activity_new_user">Set up Profile</string>
 

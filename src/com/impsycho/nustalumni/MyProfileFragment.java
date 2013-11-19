@@ -12,7 +12,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -112,6 +111,9 @@ public class MyProfileFragment extends Fragment {
     	update.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) { UpdateUserData(); }
     	});
+    	if (newprofile) {
+    		update.setText("Save Profile");
+    	}
     	
     	GetProfileData();
     	

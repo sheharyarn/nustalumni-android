@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.impsycho.nustalumni"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="5"
+    android:versionName="@string/app_version" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -30,7 +30,8 @@
         </activity>
         <activity
             android:name="com.impsycho.nustalumni.MainActivity"
-            android:icon="@drawable/ic_nust" >
+            android:icon="@drawable/ic_nust" 
+            android:label="Home" >
         </activity>
         <activity
             android:name="com.impsycho.nustalumni.NewsActivity"
